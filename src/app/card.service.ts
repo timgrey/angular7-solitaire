@@ -67,9 +67,11 @@ export class CardService {
   drawCard(){
     if (this.deck.length === 0) {
       this.deck = this.drawnCards
+      this.drawnCards = []
       this.drawnCards.push(this.deck.shift())
     } else {
       this.drawnCards.push(this.deck.shift())
     }
   }
+
 }
