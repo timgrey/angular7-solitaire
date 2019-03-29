@@ -1,0 +1,16 @@
+.game-board-top {
+    display: flex;
+    justify-content: space-between;
+    height: 20%;
+    border: 1px dotted black;
+}
+
+.discard-piles {
+    width: 57.1%;
+    border: 1px dotted red;
+}
+
+.draw-piles {
+    width: 28.5%;
+    border: 1px dotted blue
+}
