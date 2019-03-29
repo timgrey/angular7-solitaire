@@ -6,21 +6,19 @@ import { Card } from './card'
 })
 export class CardService {
 
-  deck: Card[]
+  deck: Card[] = []
   suiteSymbols = ['♠︎', '♦︎', '♣︎', '♥︎']
   suites = ['spade', 'diamond', 'club', 'heart']
   cardNames = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
-  playPiles: [Card[]]
-  discardPlies: [Card[]]
-  drawPiles: [Card[]]
-
+  playPiles = []
+  discardPiles = [[], [], [], []]
+  drawnCards: Card[] = []
 
   constructor() {
     this.generateDeck()
   }
 
   generateDeck() {
-    console.log('generating deck')
     for (let i = 1; i < 14; i++) {
       for (let s = 0; s < this.suites.length; s++) {
         let suite = this.suites[s];
@@ -28,37 +26,50 @@ export class CardService {
         newCard.isRed = suite === 'diamond' || suite === 'heart' ? true : false;
         newCard.suite = suite
         newCard.value = i
-        newCard.name = `${this.cardNames[i-1]}${this.suiteSymbols[s]}`
-        console.log(newCard)
-        // this.deck.push(newCard)
+        newCard.name = `${this.cardNames[i - 1]}${this.suiteSymbols[s]}`
+        this.deck.push(newCard)
       }
     }
-    this.shuffleDeck(100)
+    this.shuffleDeck()
   }
-  
 
-  shuffleDeck(timesToShuffle) {
-    console.log('shuffling deck')
+
+  shuffleDeck() {
+    let timesToShuffle = 5
     for (let i = 0; i < timesToShuffle; i++) {
-      let shuffledDeck
-      while (this.deck.length > 0) {
-        let deckIndex = Math.floor(Math.random() * 52)
+      let shuffledDeck: Card[] = []
+      while (this.deck.length >= 1) {
+        let deckIndex = Math.floor(Math.random() * this.deck.length)
         shuffledDeck.push(this.deck[deckIndex])
         this.deck.splice(deckIndex, 1)
       }
       this.deck = shuffledDeck;
-      console.log(this.deck)
     }
+    this.dealDeck()
   }
 
   dealDeck() {
     console.log('dealing deck')
-    for (let i=0; i < 7; i++) {
-      let playPile = [];
-      while ( this.playPiles.length < i + 1) {
+    for (let i = 0; i < 7; i++) {
+      let playPile: Card[] = [];
+      while (playPile.length < (i + 1)) {
         playPile.push(this.deck.shift())
       }
       this.playPiles.push(playPile)
+    }
+    this.drawnCards.push(this.deck.shift())
+    console.log('playPiles:')
+    console.log(this.playPiles)
+    console.log('deck:')
+    console.log(this.deck)
+  }
+
+  drawCard(){
+    if (this.deck.length === 0) {
+      this.deck = this.drawnCards
+      this.drawnCards.push(this.deck.shift())
+    } else {
+      this.drawnCards.push(this.deck.shift())
     }
   }
 }

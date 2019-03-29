@@ -1,0 +1,51 @@
+.no-cards {
+  width: 223px;
+  height: 314px;
+  background: darkgrey;
+  border: 1px soild black;
+}
+
+.cards {
+  width: 223px;
+  height: 314px;
+  background: red;
+}
+
+.draw-piles {
+  display: flex;
+  border: 1px dotted blue
+}
+
+.current-card {
+  width: 223px;
+  height: 314px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top-of-card {
+  padding: 10px;
+  height: 50%;
+  width: 100%;
+  display: flex;
+}
+
+.bottom-of-card {
+  align-self: flex-end;
+  display:flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 10px;
+  height: 50%;
+  width: 100%;
+}
+
+.black-suit {
+    color: black;
+}
+
+.red-suit {
+    color: rgb(163, 3, 3);
+}

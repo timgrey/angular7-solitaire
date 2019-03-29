@@ -1,3 +1,24 @@
-<p>
-  draw-piles works!
-</p>
+<div class='draw-piles'>
+
+  <div class='current-card'>
+    <div [className]='cardService.drawnCards[cardService.drawnCards.length-1].isRed ? "top-of-card red-suit" : "top-of-card black-suit"'>
+      {{cardService.drawnCards[cardService.drawnCards.length-1].name}}
+    </div>
+    <div [className]='cardService.drawnCards[cardService.drawnCards.length-1].isRed ? "bottom-of-card red-suit" : "bottom-of-card black-suit"'>
+      {{cardService.drawnCards[cardService.drawnCards.length-1].name}}
+    </div>
+  </div>
+
+  <div class='deck'>
+
+    <div class='no-cards' *ngIf='cardService.deck.length === 0'>
+
+    </div>
+
+    <div class='cards' *ngIf='cardService.deck.length > 0'>
+
+    </div>
+
+  </div>
+
+</div>

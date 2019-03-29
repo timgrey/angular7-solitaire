@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardService } from '../card.service'
 
 @Component({
   selector: 'app-draw-piles',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DrawPilesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cardService: CardService) { }
 
   ngOnInit() {
   }
