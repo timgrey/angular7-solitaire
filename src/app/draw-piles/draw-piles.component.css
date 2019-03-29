@@ -6,9 +6,12 @@
 }
 
 .cards {
-  width: 223px;
-  height: 314px;
-  background: red;
+  box-sizing: border-box;
+  margin:40px;
+  margin-left: 0px;
+  width: 15vw;
+  height: 20vw;
+  background: firebrick;
 }
 
 .draw-piles {
@@ -17,10 +20,11 @@
 }
 
 .current-card {
-  width: 223px;
-  height: 314px;
+  margin:40px;
+  width: 15vw;
+  height: 20vw;
   background: white;
-  display: flex;
+  display: flex;  
   flex-direction: column;
   justify-content: space-between;
 }
